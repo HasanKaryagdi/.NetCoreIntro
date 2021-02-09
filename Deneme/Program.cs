@@ -19,6 +19,7 @@ namespace Deneme
             ArabaManager arabaManager = new ArabaManager();
             arabaManager.Ekle(araba1);
             arabaManager.Ekle(araba2);
+
         }
     }
 }
