@@ -6,12 +6,19 @@ namespace OOP3
 {
     class BasvuruManager
     {
-        public void BasvuruYap(IKrediBaseManager krediBaseManager)
+        //MEthod İnjection
+        //Çoğul loglama yollama List ile gönderme
+        public void BasvuruYap(IKrediBaseManager krediBaseManager,List<ILoggerService> loggerServices)
         {
             //Başvuran Bilgilerini Değerlendirme
             //
 
             krediBaseManager.Hesapla();
+            foreach (var loggerService in loggerServices)
+            {
+                loggerService.Log();
+            }
+            //Hangi Loglayıcı seçilmişse sistemde onu logla diyorum
 
 
             //Tüm başvuruları  Konut Kredisi üzerinden Hesaplanır durumuna getirdin.

@@ -37,17 +37,24 @@ namespace OOP3
             IKrediBaseManager ihtiyacKrediBaseManager = new IhtiyacKrediManager();
             IKrediBaseManager konutKrediBaseManager = new KonutKrediManager();
             IKrediBaseManager tasitKrediBaseManager = new TasitKrediManager();
+            ILoggerService databaseLoggerService = new DatabaseLoggerService();
+            ILoggerService fileLoggerService = new FileLoggerService();
 
+            List<ILoggerService> Loggers = new List<ILoggerService>
+            {
+                new DatabaseLoggerService(),
+                new FileLoggerService()
+            };
 
             BasvuruManager basvuruManager = new BasvuruManager();
-            //basvuruManager.BasvuruYap(konutKrediBaseManager);
+            basvuruManager.BasvuruYap(konutKrediBaseManager, Loggers);
 
             //KrediOnBilgilendirmesiYap(List<IKrediBaseManager> krediler) İçin
             List<IKrediBaseManager> krediler = new List<IKrediBaseManager>()
             {
                 ihtiyacKrediBaseManager,konutKrediBaseManager,tasitKrediBaseManager
             };
-            basvuruManager.KrediOnBilgilendirmesiYap(krediler);
+            //basvuruManager.KrediOnBilgilendirmesiYap(krediler);
 
         }
     }
